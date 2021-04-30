@@ -14,6 +14,7 @@ public class DB {
 	public static Connection getConnection() {
 		if (conn == null) {
 			try {
+				//ira acessar o arquivo de propriedade
 				Properties props = loadProperties();
 				String url = props.getProperty("dburl");
 				conn = DriverManager.getConnection(url, props);
@@ -36,6 +37,8 @@ public class DB {
 	}
 	
 	private static Properties loadProperties() {
+
+		//logica para abrir o arquivo
 		try (FileInputStream fs = new FileInputStream("db.properties")) {
 			Properties props = new Properties();
 			props.load(fs);
